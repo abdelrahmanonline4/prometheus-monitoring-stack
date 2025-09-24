@@ -1,0 +1,46 @@
+grafana:
+  adminUser: admin
+  adminPassword: password
+  service:
+    type: NodePort
+    nodePort: 30094
+  persistence:
+    enabled: false
+  affinity: {}
+  tolerations: []
+  nodeSelector: {}
+  defaultDatasourceEnabled: false
+  additionalDataSources: []
+  sidecar:
+    datasources:
+      enabled: false
+
+prometheus-node-exporter:
+  service:
+    type: NodePort
+    nodePort: 30095
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+  affinity: {}
+  tolerations: []
+  nodeSelector: {}
+
+kube-state-metrics:
+  service:
+    type: NodePort
+    nodePort: 30096
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  affinity: {}
+  tolerations: []
+  nodeSelector: {}
